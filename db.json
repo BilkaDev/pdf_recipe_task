@@ -1,0 +1,54 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Naleśniki z owocami",
+      "description": "Delikatne naleśniki z dodatkiem świeżych owoców.",
+      "ingredients": [
+        { "name": "Jajka (surowe)", "unit": "Sztuka", "perOne": 50, "processed": 45 },
+        { "name": "Mąka pszenna", "unit": "Gram", "perOne": 80, "processed": 80 }
+      ],
+      "portions": 8,
+      "preparation": [
+        "Wymieszaj mąkę z jajkami i mlekiem do uzyskania gładkiego ciasta",
+        "Rozgrzej patelnię i posmaruj olejem",
+        "Wylej porcję ciasta na patelnię i rozprowadź równomiernie",
+        "Smaż z obu stron na złoty kolor",
+        "Podawaj z ulubionymi owocami"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Zupa pomidorowa",
+      "description": "Aromatyczna zupa na bazie pomidorów.",
+      "ingredients": [
+        { "name": "Pomidory", "unit": "Gram", "perOne": 200, "processed": 180 },
+        { "name": "Woda", "unit": "Ml", "perOne": 500, "processed": 500 }
+      ],
+      "portions": 4,
+      "preparation": [
+        "Zagotuj wodę w garnku",
+        "Pokrój pomidory w kostkę",
+        "Dodaj pomidory do wody",
+        "Gotuj na małym ogniu przez 20 minut",
+        "Dopraw solą i pieprzem do smaku"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Tosty francuskie",
+      "description": "Chrupiące tosty na słodko.",
+      "ingredients": [
+        { "name": "Chleb", "unit": "Sztuka", "perOne": 60, "processed": 55 },
+        { "name": "Jajka", "unit": "Sztuka", "perOne": 50, "processed": 50 }
+      ],
+      "portions": 2,
+      "preparation": [
+        "Roztrzep jajka w płaskim naczyniu",
+        "Zamocz kromki chleba w jajku z obu stron",
+        "Rozgrzej patelnię z masłem",
+        "Smaż tosty z obu stron na złoty kolor"
+      ]
+    }
+  ]
+}
