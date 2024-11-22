@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MatTableModule } from "@angular/material/table";
 import { MatIconModule } from "@angular/material/icon";
 import { Subscription } from "rxjs";
-import { Recipe } from "../../../core/components/models/recipe.model";
+import { RecipeDetails } from "../../../core/components/models/recipe.model";
 import { RecipesService } from "../../recipes.service";
+import { GenerateRecipePdfService } from "../../generate-recipe-pdf.service";
 
 @Component({
   selector: "app-recipes-table",
@@ -14,13 +15,16 @@ import { RecipesService } from "../../recipes.service";
 })
 export class RecipesTableComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ["id", "name", "action"];
-  dataSource: Recipe[] | null = null;
+  dataSource: RecipeDetails[] | null = null;
   sub!: Subscription;
 
-  constructor(private recipesService: RecipesService) {}
+  constructor(
+    private recipesService: RecipesService,
+    private generateRecipePdfService: GenerateRecipePdfService
+  ) {}
 
   ngOnInit(): void {
-    this.sub = this.recipesService.recipes.subscribe({
+    this.sub = this.recipesService.recipesDetails.subscribe({
       next: (recipes) => {
         this.dataSource = recipes;
       },
@@ -31,7 +35,7 @@ export class RecipesTableComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  onDownload(recipe: Recipe) {
-    console.log(recipe);
+  onDownload(recipe: RecipeDetails) {
+    this.generateRecipePdfService.generatePdf([recipe], this.dataSource ?? []);
   }
 }

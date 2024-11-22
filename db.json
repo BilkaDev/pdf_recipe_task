@@ -2,11 +2,59 @@
   "recipes": [
     {
       "id": 1,
-      "name": "Naleśniki z owocami",
+      "name": "Naleśniki",
+      "mealType": "sniadanie",
+      "description": "Delikatne naleśniki.",
+      "ingredients": [
+        { "name": "Jajka (surowe)", "unit": "Sztuka", "unitWeight": 50, "perOne": 11.76, "processed": 11.76 },
+        { "name": "Mąka pszenna (typu 500)", "unit": "Gram", "unitWeight": 100, "perOne": 23.53, "processed": 23.53 },
+        { "name": "Mleko spożywcze (1,5% tł)", "unit": "Gram", "unitWeight": 100, "perOne": 18.82, "processed": 18.82 },
+        { "name": "Olej rzepakowy", "unit": "Gram", "unitWeight": 100, "perOne": 2.36, "processed": 2.36 },
+        { "name": "Woda mineralna", "unit": "Gram", "unitWeight": 100, "perOne": 23.53, "processed": 23.53 }
+      ],
+      "portions": 1433,
+      "preparation": [
+        "Wymieszaj mąkę z jajkami i mlekiem do uzyskania gładkiego ciasta",
+        "Rozgrzej patelnię i posmaruj olejem",
+        "Wylej porcję ciasta na patelnię i rozprowadź równomiernie",
+        "Smaż z obu stron na złoty kolor"
+      ],
+      "usedIn": [3]
+    },
+    {
+      "id": 2,
+      "name": "Rosół",
+      "mealType": "obiad",
+      "description": "Aromatyczna zupa.",
+      "ingredients": [
+        { "name": "Woda", "unit": "Sztuka", "unitWeight": 100, "perOne": 500, "processed": 500 },
+        { "name": "Cebula", "unit": "Sztuka", "unitWeight": 100, "perOne": 50, "processed": 45 },
+        { "name": "Marchew", "unit": "Sztuka", "unitWeight": 100, "perOne": 50, "processed": 45 },
+        { "name": "Olej", "unit": "Gram", "unitWeight": 100, "perOne": 10, "processed": 10 },
+        { "name": "Kurczak", "unit": "Gram", "unitWeight": 500, "perOne": 100, "processed": 95 }
+      ],
+      "portions": 40,
+      "preparation": [
+        "Zagotuj wodę w garnku",
+        "Dodaj cebulę, marchew, kurczak, sól i pieprz",
+        "Gotuj na małym ogniu przez 20 minut",
+        "Dopraw solą i pieprzem do smaku"
+      ],
+      "usedIn": []
+    },
+    {
+      "id": 3,
+      "name": "Naleśniki z serkiem i owocami",
+      "mealType": "sniadanie",
       "description": "Delikatne naleśniki z dodatkiem świeżych owoców.",
       "ingredients": [
-        { "name": "Jajka (surowe)", "unit": "Sztuka", "perOne": 50, "processed": 45 },
-        { "name": "Mąka pszenna", "unit": "Gram", "perOne": 80, "processed": 80 }
+        { "name": "Jajka (surowe)", "unit": "Sztuka", "unitWeight": 50, "perOne": 11.76, "processed": 11.76 },
+        { "name": "Mąka pszenna (typu 500)", "unit": "Gram", "unitWeight": 100, "perOne": 23.53, "processed": 23.53 },
+        { "name": "Mleko spożywcze (1,5% tł)", "unit": "Gram", "unitWeight": 100, "perOne": 18.82, "processed": 18.82 },
+        { "name": "Olej rzepakowy", "unit": "Gram", "unitWeight": 100, "perOne": 2.36, "processed": 2.36 },
+        { "name": "Woda mineralna", "unit": "Gram", "unitWeight": 100, "perOne": 11.76, "processed": 11.76 },
+        { "name": "Ser", "unit": "Gram", "unitWeight": 100, "perOne": 2.36, "processed": 2.36 },
+        { "name": "Świeże owoce", "unit": "Gram", "unitWeight": 100, "perOne": 2.36, "processed": 2.36 }
       ],
       "portions": 8,
       "preparation": [
@@ -15,40 +63,8 @@
         "Wylej porcję ciasta na patelnię i rozprowadź równomiernie",
         "Smaż z obu stron na złoty kolor",
         "Podawaj z ulubionymi owocami"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Zupa pomidorowa",
-      "description": "Aromatyczna zupa na bazie pomidorów.",
-      "ingredients": [
-        { "name": "Pomidory", "unit": "Gram", "perOne": 200, "processed": 180 },
-        { "name": "Woda", "unit": "Ml", "perOne": 500, "processed": 500 }
       ],
-      "portions": 4,
-      "preparation": [
-        "Zagotuj wodę w garnku",
-        "Pokrój pomidory w kostkę",
-        "Dodaj pomidory do wody",
-        "Gotuj na małym ogniu przez 20 minut",
-        "Dopraw solą i pieprzem do smaku"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Tosty francuskie",
-      "description": "Chrupiące tosty na słodko.",
-      "ingredients": [
-        { "name": "Chleb", "unit": "Sztuka", "perOne": 60, "processed": 55 },
-        { "name": "Jajka", "unit": "Sztuka", "perOne": 50, "processed": 50 }
-      ],
-      "portions": 2,
-      "preparation": [
-        "Roztrzep jajka w płaskim naczyniu",
-        "Zamocz kromki chleba w jajku z obu stron",
-        "Rozgrzej patelnię z masłem",
-        "Smaż tosty z obu stron na złoty kolor"
-      ]
+      "usedIn": []
     }
   ]
 }
