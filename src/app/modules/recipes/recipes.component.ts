@@ -21,7 +21,7 @@ export class RecipesComponent implements OnInit {
 
   onDownloadAll() {
     const recipes = this.recipesService.recipesDetails.getValue() ?? [];
-    this.generateRecipePdfService.generatePdf(recipes, recipes);
+    this.generateRecipePdfService.generateRecipeForCookPdf(recipes, recipes);
   }
 
   ngOnInit(): void {

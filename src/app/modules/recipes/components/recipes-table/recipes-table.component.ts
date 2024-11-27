@@ -36,6 +36,6 @@ export class RecipesTableComponent implements OnInit, OnDestroy {
   }
 
   onDownload(recipe: RecipeDetails) {
-    this.generateRecipePdfService.generatePdf([recipe], this.dataSource ?? []);
+    this.generateRecipePdfService.generateRecipeForCookPdf([recipe], this.dataSource ?? []);
   }
 }
