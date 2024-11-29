@@ -27,4 +27,8 @@ export class RecipesComponent implements OnInit {
   ngOnInit(): void {
     this.recipesService.getRecipes().subscribe();
   }
+
+  onDownloadReportDishes() {
+    this.generateRecipePdfService.generateReportDishesPdf();
+  }
 }

@@ -16,14 +16,14 @@ const FontsDefinition = {
   },
 };
 
-type CompanyDetails = {
+interface CompanyDetails {
   name: string;
   addres: string;
   city: string;
   postCode: string;
   email: string;
   tel: string;
-};
+}
 
 @Injectable({
   providedIn: "root",
@@ -33,14 +33,14 @@ export class PdfMakeService {
     pdfMake.createPdf(docDefinition, undefined, FontsDefinition, vfs).open();
   }
 
-  createHeader(): TDocumentDefinitions["content"] {
+  createHeader(mark = "X-Marka 1", paramark = "X-Klient 1"): TDocumentDefinitions["content"] {
     return [
       {
         margin: [20, 10, 20, 10],
         columns: [
           [
             {
-              text: `Marka 1 - ${new Date().toLocaleDateString()} - Klient 1`,
+              text: `${mark} - ${new Date().toLocaleDateString()} - ${paramark} ${new Date().toLocaleDateString()}`,
               fontSize: 10,
               color: "#0E1D2D",
               bold: true,
@@ -93,7 +93,8 @@ export class PdfMakeService {
       { text: companyDetails.tel, alignment: "left", fontSize: 8 },
     ];
   }
-  createContentTitle(title: string): TDocumentDefinitions["content"] {
+
+  ComponentContentTitle(title: string): TDocumentDefinitions["content"] {
     return [
       {
         canvas: [{ type: "line", x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 2 }],
