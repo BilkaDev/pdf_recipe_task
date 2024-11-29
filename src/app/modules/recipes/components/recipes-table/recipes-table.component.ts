@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MatTableModule } from "@angular/material/table";
 import { MatIconModule } from "@angular/material/icon";
 import { Subscription } from "rxjs";
-import { RecipeDetails } from "../../../core/components/models/recipe.model";
+import { RecipeDetails } from "../../../core/models/recipe.model";
 import { RecipesService } from "../../recipes.service";
 import { GenerateRecipePdfService } from "../../generate-recipe-pdf.service";
 

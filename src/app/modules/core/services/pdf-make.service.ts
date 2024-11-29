@@ -105,4 +105,11 @@ export class PdfMakeService {
       },
     ];
   }
+
+  addUnit(value: number): string {
+    if (value < 1000) {
+      return `${value}g`;
+    }
+    return `${(value / 1000).toFixed(2)}kg`;
+  }
 }

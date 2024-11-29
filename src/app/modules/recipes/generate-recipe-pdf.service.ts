@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TDocumentDefinitions } from "pdfmake/interfaces";
-import { RecipeDetails } from "../core/components/models/recipe.model";
+import { RecipeDetails } from "../core/models/recipe.model";
 import { PdfMakeService } from "../core/services/pdf-make.service";
 
 const companyDetails = {
@@ -27,63 +27,6 @@ export class GenerateRecipePdfService {
     this.pdfMakeService.createPdf(docDefinition);
   }
 
-  private createChecklistPdfDocument(): TDocumentDefinitions {
-    const contentForChecklist: TDocumentDefinitions["content"] = [
-      this.pdfMakeService.createContentHeaderCompanyDetails(companyDetails),
-      {
-        table: {
-          headerRows: 1,
-          widths: [50, 60, "*", 50],
-          body: [
-            [
-              { text: "Wykonano", style: "tableHeader", fillColor: "#F0F0F0" },
-              { text: "Dieta", style: "tableHeader", fillColor: "#F0F0F0" },
-              { text: "Danie", style: "tableHeader", fillColor: "#F0F0F0" },
-              { text: "Wykonano", style: "tableHeader", fillColor: "#F0F0F0" },
-            ],
-            [
-              { text: "", rowSpan: 5 },
-              { rowSpan: 5, text: "Niski IG (18)", style: "tableCell" },
-              { text: "(ID: 88) Weganskie smarowidło z bialej faoli", style: "tableCell" },
-              { text: "", rowSpan: 5 },
-            ],
-            [{}, {}, { text: "(ID: 88) Weganskie smarowidło z bialej faoli", style: "tableCell" }, {}],
-            [{}, {}, { text: "(ID: 88) Weganskie smarowidło z bialej faoli", style: "tableCell" }, {}],
-
-            [{}, {}, { text: "(ID: 88) Weganskie smarowidło z bialej faoli", style: "tableCell" }, {}],
-            [{}, {}, { text: "(ID: 88) Weganskie smarowidło z bialej faoli", style: "tableCell" }, {}],
-            [{}, { text: "Wybór (141)", style: "tableCell" }, {}, { text: "", border: [true, true, false, false] }],
-          ],
-        },
-        marginTop: 10,
-      },
-    ];
-
-    const docDefinition: TDocumentDefinitions = {
-      info: this.pdfMakeService.createPageInfo(),
-      pageSize: "A4",
-      pageMargins: [40, 30, 40, 20],
-      header: this.pdfMakeService.createHeader(),
-      content: contentForChecklist,
-      styles: {
-        header: {
-          bold: true,
-          fontSize: 12,
-          color: "black",
-        },
-        tableHeader: {
-          bold: true,
-          fontSize: 10,
-          color: "black",
-        },
-        tableCell: {
-          fontSize: 10,
-          color: "black",
-        },
-      },
-    };
-    return docDefinition;
-  }
   dish = {
     id: 1629,
     marks: ["Power Catering"],
@@ -337,14 +280,14 @@ export class GenerateRecipePdfService {
       {},
       { text: "", style: "tableCell", alignment: "center" },
       ...mealTypes.map((mt) => ({
-        text: `${this.addUnit(this.calculateTotalProcessedWeight(mt))}`,
+        text: `${this.pdfMakeService.addUnit(this.calculateTotalProcessedWeight(mt))}`,
         style: "tableCell",
         alignment: "center",
       })),
       ...(mealTypes.length < 5 && showSumInFirstTable
         ? [
             {
-              text: `${this.addUnit(
+              text: `${this.pdfMakeService.addUnit(
                 mealTypes.reduce((sum, mt) => sum + this.calculateTotalProcessedWeightWithCount(mt), 0)
               )}`,
               style: "tableCell",
@@ -441,7 +384,7 @@ export class GenerateRecipePdfService {
           { text: `${item.wpo}g`, style: "tableCell", alignment: "center" },
           ...mealTypes.map((mt) => {
             return {
-              text: this.addUnit(mt.items.find((i) => i.recipeId === item.recipeId)?.wpoPerPortion ?? 0),
+              text: this.pdfMakeService.addUnit(mt.items.find((i) => i.recipeId === item.recipeId)?.wpoPerPortion ?? 0),
               style: "tableCell",
               alignment: "center",
             };
@@ -449,7 +392,7 @@ export class GenerateRecipePdfService {
           ...(showSumInFirstTable
             ? [
                 {
-                  text: `${this.addUnit(
+                  text: `${this.pdfMakeService.addUnit(
                     dish.mealTypes.reduce((sum, mt) => {
                       const matchingItem = mt.items.find((i) => i.recipeId === item.recipeId);
                       return sum + (matchingItem ? matchingItem.wpoPerPortion * mt.count : 0);
@@ -693,7 +636,11 @@ export class GenerateRecipePdfService {
                 {
                   stack: [
                     { text: ing.unit, style: "tableCell", alignment: "center" },
-                    { text: `( ${this.addUnit(ing.unitWeight)} )`, style: "tableCell", alignment: "center" },
+                    {
+                      text: `( ${this.pdfMakeService.addUnit(ing.unitWeight)} )`,
+                      style: "tableCell",
+                      alignment: "center",
+                    },
                   ],
                 },
                 {
@@ -702,7 +649,11 @@ export class GenerateRecipePdfService {
                       text: `${ing.quantityOnPortion.toFixed(2)}`,
                       alignment: "center",
                     },
-                    { text: `( ${this.addUnit(ing.perOne)} )`, style: "tableCell", alignment: "center" },
+                    {
+                      text: `( ${this.pdfMakeService.addUnit(ing.perOne)} )`,
+                      style: "tableCell",
+                      alignment: "center",
+                    },
                   ],
                 },
                 {
@@ -712,7 +663,11 @@ export class GenerateRecipePdfService {
                       style: "tableCell",
                       alignment: "center",
                     },
-                    { text: `( ${this.addUnit(ing.processed)} )`, style: "tableCell", alignment: "center" },
+                    {
+                      text: `( ${this.pdfMakeService.addUnit(ing.processed)} )`,
+                      style: "tableCell",
+                      alignment: "center",
+                    },
                   ],
                 },
                 {
@@ -723,7 +678,7 @@ export class GenerateRecipePdfService {
                       alignment: "center",
                     },
                     {
-                      text: `( ${this.addUnit(ing.totalWeight)} )`,
+                      text: `( ${this.pdfMakeService.addUnit(ing.totalWeight)} )`,
                       style: "tableCell",
                       alignment: "center",
                     },
@@ -737,7 +692,7 @@ export class GenerateRecipePdfService {
                       alignment: "center",
                     },
                     {
-                      text: `( ${this.addUnit(ing.totalWeightProccessed)} )`,
+                      text: `( ${this.pdfMakeService.addUnit(ing.totalWeightProccessed)} )`,
                       style: "tableCell",
                       alignment: "center",
                     },
@@ -748,22 +703,22 @@ export class GenerateRecipePdfService {
                 "",
                 "",
                 {
-                  text: this.addUnit(recipe.portionWeight),
+                  text: this.pdfMakeService.addUnit(recipe.portionWeight),
                   style: "tableHeader",
                   alignment: "center",
                 },
                 {
-                  text: this.addUnit(recipe.processedPortionWeight),
+                  text: this.pdfMakeService.addUnit(recipe.processedPortionWeight),
                   style: "tableHeader",
                   alignment: "center",
                 },
                 {
-                  text: this.addUnit(recipe.totalWeight),
+                  text: this.pdfMakeService.addUnit(recipe.totalWeight),
                   style: "tableHeader",
                   alignment: "center",
                 },
                 {
-                  text: this.addUnit(recipe.totalPossedWeight),
+                  text: this.pdfMakeService.addUnit(recipe.totalPossedWeight),
                   style: "tableHeader",
                   alignment: "center",
                 },
@@ -911,12 +866,5 @@ export class GenerateRecipePdfService {
 
   private calculateTotalProcessedWeightWithCount(mealType: (typeof this.dish.mealTypes)[number]): number {
     return this.calculateTotalProcessedWeight(mealType) * mealType.count;
-  }
-
-  private addUnit(value: number): string {
-    if (value < 1000) {
-      return `${value}g`;
-    }
-    return `${(value / 1000).toFixed(2)}kg`;
   }
 }

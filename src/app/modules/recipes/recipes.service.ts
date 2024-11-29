@@ -2,10 +2,9 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { catchError, map, Observable, throwError, tap } from "rxjs";
-import { Ingredient, Recipe, RecipesResponse } from "../core/components/models/recipe.model";
+import { Ingredient, Recipe, RecipeDetails, RecipesResponse } from "../core/models/recipe.model";
 import { environment } from "../../../environments/environment.development";
 import { SnackbarService } from "../core/services/snackbar.service";
-import { RecipeDetails } from "../core/components/models/recipe.model";
 
 @Injectable({
   providedIn: "root",
